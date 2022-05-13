@@ -1,0 +1,53 @@
+class Solution {
+    ArrayList<Integer> spiralOrder = new ArrayList<Integer>();
+    
+    public List<Integer> spiralOrder(int[][] matrix) {
+            int i = 0;
+            while(spiralOrder.size()<(matrix.length*matrix[0].length)){
+                
+            addRowRight(i, i, (matrix[i].length-1)-i, matrix);
+
+            addColumnDown(i+1, (matrix[i].length-1)-i, matrix.length-i,matrix);
+
+            addRowLeft((matrix.length-1)-i,(matrix[i].length-1)-i, i, matrix );
+
+            addColumnUp((matrix.length-1)-i,i, i, matrix);
+
+            i++;
+        }
+        
+        return spiralOrder;        
+    }
+    
+    public void addRowRight(int r, int c, int stop, int[][] matrix){
+        while(c<=stop && spiralOrder.size()!=matrix.length*matrix[0].length){
+            spiralOrder.add(matrix[r][c]);
+            c++;
+        }
+        
+        
+    }
+
+    public void addColumnDown(int r, int c, int stop, int[][] matrix){
+        while(r<stop-1 && spiralOrder.size()!=matrix.length*matrix[0].length){
+            spiralOrder.add(matrix[r][c]);
+            r++;
+        }
+        
+    }
+    
+    public void addRowLeft(int r, int c, int stop, int[][] matrix){
+        while(c>stop && spiralOrder.size()!=matrix.length*matrix[0].length ){
+            spiralOrder.add(matrix[r][c]);
+            c--;
+        }
+        
+    }
+        public void addColumnUp(int r, int c, int stop, int[][] matrix){
+        while(r>stop && spiralOrder.size()!=matrix.length*matrix[0].length){
+            spiralOrder.add(matrix[r][c]);
+            r--;
+        }
+        
+    }
+}
